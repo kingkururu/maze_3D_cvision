@@ -1,6 +1,13 @@
-# 3D Maze Game
+# 3D Maze Game (Updated with Computer Vision)
 
-A 3D maze game built with C++ and SFML, featuring pathfinding algorithms and automated navigation systems. This is built on the raycasting algorithm from the previous project. 
+A 3D maze game built with C++ and SFML, featuring Computer Vision gesture-based input, A* pathfinding, and a custom raycasting engine. This project extends traditional keyboard-based navigation by using real-time hand tracking to control movement and orientation.
+
+New: Computer Vision Integration
+This version integrates a vision processing layer to allow touchless control:
+
+OpenCV: Handles the camera feed, image processing, and frame buffering.
+
+MediaPipe: Provides the machine learning backend for high-fidelity hand landmark detection.
 
 <img width="641" alt="Image" src="https://github.com/user-attachments/assets/681bd3e9-5e92-47ae-bc73-865dbb595454" />
 <img width="884" alt="Image" src="https://github.com/user-attachments/assets/4856a85c-618c-4cc3-9e42-bb8f56957bd5" />
@@ -17,10 +24,10 @@ A 3D maze game built with C++ and SFML, featuring pathfinding algorithms and aut
   
 ## Controls
 
-- **W**: Move forward
-- **S**: Move backward  
-- **A**: Rotate camera left / turn player left
-- **D**: Rotate camera right / turn player right
+- **W/thumbs up**: Move forward
+- **S/thumbs down**: Move backward  
+- **A/thumbs up left**: Rotate camera left / turn player left
+- **D/thumbs up right**: Rotate camera right / turn player right
   
 ## Project Structure
 
@@ -35,6 +42,7 @@ A 3D maze game built with C++ and SFML, featuring pathfinding algorithms and aut
 │       ├── physics/          # Physics and collision detection
 │       ├── camera/           # Window and view management
 │       ├── utils/            # Utility functions
+│       ├── vision/           # hand gesture recognition 
 │       └── scenes/           # Scene management
 │
 ├── assets/                   # Game assets
@@ -60,54 +68,19 @@ A 3D maze game built with C++ and SFML, featuring pathfinding algorithms and aut
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/kingkururu/maze_3D
-   cd maze_3D (location will be different)
+   git clone https://github.com/kingkururu/maze_3D_cvision
+   cd maze_3D_cvision (location will be different)
    ```
 
 2. **Build the Project**:
    ```bash
-   make test
+   make
    ```
 
 3. **How to Clean the Build**:
    ```bash
    make clean
    ```
-### Alternative Setup (macOS with Homebrew)
-
-1. **Install SFML**:
-   ```bash
-   # Install Homebrew if not already installed
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   
-   # Install SFML
-   brew install sfml@2
-   brew install .... (other missing libraries)
-   ```
-
-2. **Configure PATH** (add to ~/.zshrc or ~/.bash_profile):
-   ```bash
-   export PATH="/opt/homebrew/bin:$PATH"
-   export PATH="/opt/homebrew/opt/sfml@2/bin:$PATH"
-   export PATH="path to other libraries if any of them is missing)
-   ```
-
-## Key Learning Outcomes
-
-- **Algorithm Implementation**: Understanding maze generation and pathfinding algorithms
-- **Graph Theory Applications**: Practical application of DFS, Prim's, and A* algorithms
-- **Performance Optimization**: Efficient algorithms for real-time maze generation and pathfinding
-- **Data Structures**: Advanced use of graphs, priority queues, and spatial data structures
-- **File I/O Operations**: C++ file handling for maze persistence and configuration
-- **Game AI Development**: Creating intelligent navigation systems for enhanced gameplay
-
-### Maze Generation Process
-The game implements a sophisticated maze generation system that:
-1. **Algorithm Selection**: Choose between DFS and Prim's algorithms for different maze characteristics
-2. **Procedural Generation**: Create unique maze layouts using selected algorithms
-3. **Path Optimization**: Calculate optimal routes using A* pathfinding
-4. **File Operations**: Save generated mazes and load configurations
-5. **Visual Rendering**: Display maze in 3D using raycasting techniques
 
 ## Assets Credits
 
@@ -120,4 +93,6 @@ The game implements a sophisticated maze generation system that:
 - **SFML**: https://github.com/SFML/SFML 
 - **Yaml-cpp**: https://github.com/jbeder/yaml-cpp
 - **Spdlog**: https://github.com/gabime/spdlog 
-- **FMT**: https://github.com/fmtlib/fmt 
+- **FMT**: https://github.com/fmtlib/fmt
+- **OpenCV**: For camera capture and image processing.
+- **MediaPipe**: For hand tracking and landmark recognition.
