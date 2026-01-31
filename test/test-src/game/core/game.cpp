@@ -91,5 +91,6 @@ void GameManager::handleEventInput() {
 
 void GameManager::resetFlags(){
     FlagSystem::flagEvents.mouseClicked = false;
+    FlagSystem::flagEvents.cv_allDirectionKeyReleased();
 }
 

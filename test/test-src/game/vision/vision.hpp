@@ -6,7 +6,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#include "../test-logging/log.hpp"      
+#include "../globals/globals.hpp"
 
 namespace VisionSystem {
     inline FILE* visionPipe = nullptr;

@@ -26,13 +26,32 @@ void VisionSystem::getVisionInput() {
 
             // Update your Game State here instead of just printing
             switch(gesture) {
-                case 1: std::cout << "C++ Received: FORWARD" << std::endl; break;
-                case 2: std::cout << "C++ Received: BACKWARD" << std::endl; break;
-                case 3: std::cout << "C++ Received: LEFT" << std::endl; break;
-                case 4: std::cout << "C++ Received: RIGHT" << std::endl; break;
-                case 5: std::cout << "C++ Received: NONE" << std::endl; break;
-                default: std::cout << "C++ Received: UNKNOWN" << std::endl; break;
+                case 1: 
+                    FlagSystem::flagEvents.cv_wPressed = true; 
+                    break;
+                case 2: 
+                    FlagSystem::flagEvents.cv_sPressed = true; 
+                    break;
+                case 3:
+                    FlagSystem::flagEvents.cv_aPressed = true; 
+                    break;
+                case 4: 
+                    FlagSystem::flagEvents.cv_dPressed = true; 
+                    break;
+                case 5:                   
+                    FlagSystem::flagEvents.cv_allDirectionKeyReleased();
+                    break;
+                default: 
+                    FlagSystem::flagEvents.cv_allDirectionKeyReleased();
+                    break;
             }
+
+             std::cout << "Current CV Flags - W: " << FlagSystem::flagEvents.cv_wPressed
+                          << ", A: " << FlagSystem::flagEvents.cv_aPressed
+                          << ", S: " << FlagSystem::flagEvents.cv_sPressed
+                          << ", D: " << FlagSystem::flagEvents.cv_dPressed << std::endl;
+
+
         } catch (const std::exception& e) {
             log_error("Error parsing vision input: " + std::string(e.what()));
         }

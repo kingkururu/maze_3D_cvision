@@ -202,26 +202,26 @@ void gamePlayScene::handleMovementKeys() {
 
     // std::cout << "Tile X: " << tileX << ", Tile Y: " << tileY << ", inex: " << tileIndexInMap << "can walk: "<< canWalkOnTile<< std::endl;
     
-    if(FlagSystem::flagEvents.aPressed){ // turn left
+    if(FlagSystem::flagEvents.aPressed || FlagSystem::flagEvents.cv_aPressed){ // turn left
         player->returnSpritesShape().rotate(-1.0f); // degrees
         float newAngle = player->returnSpritesShape().getRotation();
         player->setHeadingAngle(newAngle);
         FlagSystem::gameScene1Flags.begin = true;
        // player->setAutoNavigate(false); // stop auto navigation
     }
-    if(FlagSystem::flagEvents.dPressed){ // turn right 
+    if(FlagSystem::flagEvents.dPressed || FlagSystem::flagEvents.cv_dPressed){ // turn right 
         player->returnSpritesShape().rotate(1.0f); // degrees
         float newAngle = player->returnSpritesShape().getRotation();
         player->setHeadingAngle(newAngle);
         FlagSystem::gameScene1Flags.begin = true;
        // player->setAutoNavigate(false); // stop auto navigation
     }
-    if(FlagSystem::flagEvents.wPressed && canWalkOnTile){ // front 
+    if((FlagSystem::flagEvents.wPressed || FlagSystem::flagEvents.cv_wPressed) && canWalkOnTile){ // front 
         physics::spriteMover(player, physics::followDirVec); 
         FlagSystem::gameScene1Flags.begin = true;
        // player->setAutoNavigate(false); // stop auto navigation
     }
-    if(FlagSystem::flagEvents.sPressed && canWalkOnTile){ // back
+    if((FlagSystem::flagEvents.sPressed || FlagSystem::flagEvents.cv_sPressed) && canWalkOnTile){ // back
         physics::spriteMover(player, physics::followDirVecOpposite); 
         FlagSystem::gameScene1Flags.begin = true;
        // player->setAutoNavigate(true); // stop auto navigation

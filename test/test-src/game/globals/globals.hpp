@@ -227,7 +227,13 @@ namespace FlagSystem {
         bool spacePressed; 
         bool mouseClicked;
 
-        FlagEvents() : wPressed(false), aPressed(false), sPressed(false), dPressed(false), bPressed(false), mPressed(false), spacePressed(false), mouseClicked(false) {}
+        // computer vision inputs
+        bool cv_wPressed;
+        bool cv_aPressed;
+        bool cv_sPressed;
+        bool cv_dPressed;
+
+        FlagEvents() : wPressed(false), aPressed(false), sPressed(false), dPressed(false), bPressed(false), mPressed(false), spacePressed(false), mouseClicked(false), cv_wPressed(false), cv_aPressed(false), cv_sPressed(false), cv_dPressed(false) {}
 
         // resets every flag
         void resetFlags() {
@@ -244,6 +250,20 @@ namespace FlagSystem {
             bPressed = false;
             mPressed = false;
             spacePressed = false;
+        }
+
+        void allDirectionKeyReleased() {
+            wPressed = false;
+            aPressed = false;
+            sPressed = false;
+            dPressed = false;
+        }
+        
+        void cv_allDirectionKeyReleased() {
+            cv_wPressed = false;
+            cv_aPressed = false;
+            cv_sPressed = false;
+            cv_dPressed = false;
         }
     };
 

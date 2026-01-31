@@ -74,6 +74,7 @@ while cap.isOpened():
             # 3. Determine Gesture
             if any(other_fingers_up):
                 direction = "None (Fingers Open)"
+                currDir = Direction.NONE
                 color = (0, 0, 255)
             else:
                 # --- Your Existing Angle Logic (Thumb Tip vs Wrist) ---
