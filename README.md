@@ -2,13 +2,6 @@
 
 A 3D maze game built with C++ and SFML, featuring Computer Vision gesture-based input, A* pathfinding, and a custom raycasting engine. This project extends traditional keyboard-based navigation by using real-time hand tracking to control movement and orientation.
 
-New: Computer Vision Integration
-This version integrates a vision processing layer to allow touchless control:
-
-OpenCV: Handles the camera feed, image processing, and frame buffering.
-
-MediaPipe: Provides the machine learning backend for high-fidelity hand landmark detection.
-
 <img width="641" alt="Image" src="https://github.com/user-attachments/assets/681bd3e9-5e92-47ae-bc73-865dbb595454" />
 <img width="884" alt="Image" src="https://github.com/user-attachments/assets/4856a85c-618c-4cc3-9e42-bb8f56957bd5" />
 <img width="950" alt="Image" src="https://github.com/user-attachments/assets/ae51ba5a-fd90-45b8-8330-e17a46d82088" />
@@ -21,6 +14,7 @@ MediaPipe: Provides the machine learning backend for high-fidelity hand landmark
 - **Real-time Path Visualization**: Visual representation of calculated paths
 - **Performance Optimized**: Efficient maze generation and pathfinding algorithms
 - **File I/O Integration**: Save and load maze configurations
+- **Gesture Control System**: Use your hands to navigate the maze via OpenCV and MediaPipe.
   
 ## Controls
 
