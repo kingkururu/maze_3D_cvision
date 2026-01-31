@@ -34,7 +34,6 @@ void GameManager::runScenesFlags(){
     if(!FlagSystem::flagEvents.gameEnd){
         if(FlagSystem::gameScene1Flags.sceneStart && !FlagSystem::gameScene1Flags.sceneEnd) gameScene->runScene();
     }
-    
 }
 
 void GameManager::loadScenes(){

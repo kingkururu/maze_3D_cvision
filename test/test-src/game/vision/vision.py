@@ -101,6 +101,8 @@ while cap.isOpened():
             # 4. Print to screen
             cv2.putText(frame, f"DIR: {direction}", (50, 100), 
                         cv2.FONT_HERSHEY_SIMPLEX, 3, color, 10)
+    else:
+        currDir = Direction.NONE
         
     window_name = 'Webcam Feed'
     cv2.namedWindow(window_name, cv2.WINDOW_AUTOSIZE)
