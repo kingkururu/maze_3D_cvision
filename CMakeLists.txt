@@ -7,11 +7,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 1. --- Dependencies ---
-# CMake automatically looks in /opt/homebrew on Apple Silicon
 find_package(SFML 2.6 COMPONENTS graphics window system audio REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(fmt REQUIRED)
 find_package(yaml-cpp REQUIRED)
+
+# --- Added Python Support ---
+find_package(Python3 COMPONENTS Development Interpreter REQUIRED)
 
 # 2. --- Source Files ---
 set(RUN_SOURCES
@@ -22,6 +24,7 @@ set(RUN_SOURCES
     test/test-src/game/camera/window.cpp
     test/test-src/game/utils/utils.cpp
     test/test-src/game/scenes/scenes.cpp
+    test/test-src/game/vision/vision.cpp
     test/test-assets/sprites/sprites.cpp
     test/test-assets/fonts/fonts.cpp
     test/test-assets/sound/sound.cpp
@@ -30,7 +33,6 @@ set(RUN_SOURCES
 )
 
 # 3. --- Executable Target ---
-# Retitled from "test" to "run"
 add_executable(run ${RUN_SOURCES})
 
 # 4. --- Preprocessor Definitions ---
@@ -45,12 +47,14 @@ target_include_directories(run PRIVATE
     ./test/test-src/game/physics
     ./test/test-src/game/scenes
     ./test/test-src/game/utils
+    ./test/test-src/game/vision
     ./test/test-assets
     ./test/test-assets/fonts
     ./test/test-assets/sound
     ./test/test-assets/tiles
     ./test/test-assets/sprites
     ./test/test-logging
+    ${Python3_INCLUDE_DIRS} # Added Python headers
 )
 
 # 6. --- Link Libraries ---
@@ -62,15 +66,30 @@ target_link_libraries(run PRIVATE
     spdlog::spdlog
     fmt::fmt
     yaml-cpp::yaml-cpp
+    Python3::Python # Added Python library
 )
 
-# 7. --- Copy Config File (Replaces COPY_CONFIG) ---
+# 7. --- Copy Config & Python Files ---
 add_custom_command(TARGET run POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory $<TARGET_FILE_DIR:run>/config
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${CMAKE_CURRENT_SOURCE_DIR}/test/test-src/game/globals/config.yaml
         $<TARGET_FILE_DIR:run>/config/config.yaml
-    COMMENT "Copying config.yaml to build directory"
+    
+    # UPDATE THIS LINE BELOW:
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_CURRENT_SOURCE_DIR}/test/test-src/game/vision/vision.py 
+        $<TARGET_FILE_DIR:run>/vision.py
+        
+    COMMENT "Copying config and Python script to build directory..."
+)
+
+# NEW: Copy your python file to the build directory so the C++ app can find it
+add_custom_command(TARGET run POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_CURRENT_SOURCE_DIR}/test/test-src/game/vision/vision.py 
+        $<TARGET_FILE_DIR:run>/vision.py
+    COMMENT "Copying Python script to build directory..."
 )
 
 # This copies 'test' folder into the 'build' folder

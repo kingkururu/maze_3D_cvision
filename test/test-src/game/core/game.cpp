@@ -13,6 +13,7 @@ GameManager::GameManager()
 void GameManager::runGame() {
     try {     
         loadScenes(); 
+        VisionSystem::initializeVisionSystem();
 
         while (mainWindow.getWindow().isOpen()) {
             countTime();
@@ -20,7 +21,8 @@ void GameManager::runGame() {
             runScenesFlags(); 
             resetFlags();
         }
-        log_info("\tGame Ended\n"); 
+        VisionSystem::cleanupVisionSystem();
+        log_info("Game loop has ended, window closed.");
             
     } catch (const std::exception& e) {
         log_error("Exception in runGame: " + std::string(e.what())); 
@@ -49,6 +51,8 @@ void GameManager::countTime() {
 /* handleEventInput takes in keyboard and mouse input. It modifies flagEvents and calls setMouseClickedPos in scene to 
 pass in the position in screen where mouse was clicked */
 void GameManager::handleEventInput() {
+    VisionSystem::getVisionInput(); 
+
     sf::Event event;
     while (mainWindow.getWindow().pollEvent(event)) {
         if (event.type == sf::Event::Closed) {

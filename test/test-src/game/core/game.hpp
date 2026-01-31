@@ -3,8 +3,6 @@
 //  sfml game template 
 //
 
-/* This is the game.hpp file containing all the declarations for game.cpp's GameManager class. */
-
 #pragma once
 
 #include <iostream>
@@ -13,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "../scenes/scenes.hpp"
+#include "../vision/vision.hpp"
 
 class GameManager {
 public:

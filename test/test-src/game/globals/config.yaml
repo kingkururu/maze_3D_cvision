@@ -178,7 +178,7 @@ score_text:
 music:
   background_music:
     path: "test/test-assets/sound/mp3/music1.mp3"
-    volume: 80.0 # percent
+    volume: 00.0 # percent
     ending_volume: 20.0 # percent
     loop: true
 
