@@ -94,5 +94,5 @@ A 3D maze game built with C++ and SFML, featuring Computer Vision gesture-based 
 - **Yaml-cpp**: https://github.com/jbeder/yaml-cpp
 - **Spdlog**: https://github.com/gabime/spdlog 
 - **FMT**: https://github.com/fmtlib/fmt
-- **OpenCV**: For camera capture and image processing.
-- **MediaPipe**: For hand tracking and landmark recognition.
+- **OpenCV**: https://github.com/opencv/opencv 
+- **MediaPipe**: https://github.com/topics/mediapipe 
