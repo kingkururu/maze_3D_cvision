@@ -1,4 +1,22 @@
+# macOS system files
 .DS_Store
+
+# Build artifacts
+build/
+*.o
+*.out
+
+# VS Code settings
+.vscode/
+
+# Python virtual environment
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
 *.log
-/node_modules/
-/build/
