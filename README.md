@@ -35,6 +35,7 @@ A 3D maze game built with C++ and SFML, featuring pathfinding algorithms and aut
 │       ├── physics/          # Physics and collision detection
 │       ├── camera/           # Window and view management
 │       ├── utils/            # Utility functions
+│       ├── vision/           # Computer Vision for sensing hand gesture
 │       └── scenes/           # Scene management
 │
 ├── assets/                   # Game assets
