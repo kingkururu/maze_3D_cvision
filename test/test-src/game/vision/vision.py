@@ -44,10 +44,8 @@ while cap.isOpened():
     
     if results.multi_hand_landmarks:
         for hand_landmarks in results.multi_hand_landmarks:
-            # 1. Draw landmarks
             mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-            # 2. Robust Finger Open Check (Distance-based)
             wrist = hand_landmarks.landmark[0]
             other_fingers_up = []
             
@@ -71,13 +69,11 @@ while cap.isOpened():
                 else:
                     other_fingers_up.append(False)
 
-            # 3. Determine Gesture
             if any(other_fingers_up):
                 direction = "None (Fingers Open)"
                 currDir = Direction.NONE
                 color = (0, 0, 255)
             else:
-                # --- Your Existing Angle Logic (Thumb Tip vs Wrist) ---
                 thumb_tip = hand_landmarks.landmark[4]
                 delta_x = (thumb_tip.x - wrist.x) * w
                 delta_y = (thumb_tip.y - wrist.y) * h
@@ -98,7 +94,6 @@ while cap.isOpened():
                     currDir = Direction.LEFT
                 color = (255, 255, 0)
 
-            # 4. Print to screen
             cv2.putText(frame, f"DIR: {direction}", (50, 100), 
                         cv2.FONT_HERSHEY_SIMPLEX, 3, color, 10)
     else:

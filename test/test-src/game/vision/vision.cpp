@@ -46,11 +46,6 @@ void VisionSystem::getVisionInput() {
                     break;
             }
 
-            //  std::cout << "Current CV Flags - W: " << FlagSystem::flagEvents.cv_wPressed
-            //               << ", A: " << FlagSystem::flagEvents.cv_aPressed
-            //               << ", S: " << FlagSystem::flagEvents.cv_sPressed
-            //               << ", D: " << FlagSystem::flagEvents.cv_dPressed << std::endl;
-
         } catch (const std::exception& e) {
             log_error("Error parsing vision input: " + std::string(e.what()));
         }
