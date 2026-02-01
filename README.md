@@ -66,9 +66,15 @@ A 3D maze game built with C++ and SFML, featuring Computer Vision gesture-based 
    cd maze_3D_cvision (location will be different)
    ```
 
-2. **Build the Project**:
+2. **Build and run the Project**:
    ```bash
+   python3.12 -m venv .venv
+   source .venv/bin/activate
+   pip install mediapipe==0.10.15
+   mkdir build 
+   cmake .
    make
+   ./run
    ```
 
 3. **How to Clean the Build**:
