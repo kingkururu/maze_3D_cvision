@@ -74,13 +74,30 @@ A 3D maze game built with C++ and SFML, featuring Computer Vision gesture-based 
 
 2. **Build and run the Project**:
    ```bash
-   python3.12 -m venv .venv
-   source .venv/bin/activate
-   pip install mediapipe==0.10.15
-   mkdir build 
-   cmake .
-   make
-   ./run
+
+   # Update Homebrew first
+    brew update
+   
+    # Install Python 3.12 and C++ dependencies
+    brew install python@3.12 sfml@2 yaml-cpp fmt spdlog
+
+    # 1. Create and activate the virtual environment using Python 3.12
+    python3.12 -m venv .venv
+    source .venv/bin/activate
+    
+    # 2. Install MediaPipe inside the environment
+    pip install mediapipe==0.10.15
+    
+    # 3. Create build directory
+    mkdir -p build && cd build
+    
+    # 4. Run CMake
+    # We add the sfml@2 path specifically because versioned brew installs are not always found in the default /opt/homebrew/lib path.
+    cmake -DCMAKE_PREFIX_PATH="/opt/homebrew/opt/sfml@2;/opt/homebrew" ..
+    
+    # 5. Compile and Run
+    make
+    ./run
    ```
 
 3. **How to Clean the Build**:
