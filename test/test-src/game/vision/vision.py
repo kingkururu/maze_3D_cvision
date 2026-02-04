@@ -124,7 +124,7 @@ while cap.isOpened():
     except BrokenPipeError:
         sys.exit(0)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord('q'): # quit on q
         break
 
 cap.release()
