@@ -2,9 +2,15 @@
 
 A 3D maze game built with C++ and SFML, featuring Computer Vision gesture-based input, A* pathfinding, and a custom raycasting engine. This project extends traditional keyboard-based navigation by using real-time hand tracking to control movement and orientation.
 
-<img width="641" alt="Image" src="https://github.com/user-attachments/assets/681bd3e9-5e92-47ae-bc73-865dbb595454" />
-<img width="884" alt="Image" src="https://github.com/user-attachments/assets/4856a85c-618c-4cc3-9e42-bb8f56957bd5" />
-<img width="950" alt="Image" src="https://github.com/user-attachments/assets/ae51ba5a-fd90-45b8-8330-e17a46d82088" />
+<img width="997" height="488" alt="Image" src="https://github.com/user-attachments/assets/407ee617-9dd3-4170-aa46-f8f1a3ce445a" />
+
+<img width="997" height="484" alt="Image" src="https://github.com/user-attachments/assets/e9b9fa7d-2057-4456-8da9-91252695fad2" />
+
+<img width="1002" height="488" alt="Image" src="https://github.com/user-attachments/assets/e69997c4-8f57-47b1-a953-25d62ae7ff8d" />
+
+<img width="998" height="485" alt="Image" src="https://github.com/user-attachments/assets/874a40d3-eeb9-4ece-87b1-ca39363684fa" />
+
+<img width="997" height="487" alt="Image" src="https://github.com/user-attachments/assets/fbf6b104-7f38-4c6b-b6e6-e8335b2f7ccf" />
 
 ## Features
 
